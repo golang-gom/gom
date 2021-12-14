@@ -29,3 +29,27 @@ it will shows
 ```html
 <html><head><title>Home Page</title></head><body><h1>Welcome to our Home Page!</h1></body></html>
 ```
+
+or use DOM utilities
+```go
+package main
+
+import "github.com/hadihammurabi/gom"
+
+func main() {
+        dom := gom.HTML.Children(
+                gom.Head.Children(
+                        gom.Title.Children(
+                                gom.Text("Home Page"),
+                        ),
+                ),
+                gom.Body.Children(
+                        gom.H1.Children(
+                                gom.Text("Welcome to our Home Page!"),
+                        ),
+                ),
+        )
+
+        println(dom.Build())
+}
+```
