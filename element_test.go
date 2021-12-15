@@ -32,7 +32,7 @@ func TestH(t *testing.T) {
 	t.Run("With Children", func(t *testing.T) {
 		must := must.New(t)
 
-		result := H("h1").Children(H("span"))
+		result := H("h1").Ch(H("span"))
 		expected := Element{Tag: "h1", children: []*Element{{Tag: "span"}}}
 
 		must.Equal(result.Tag, expected.Tag)
@@ -43,7 +43,7 @@ func TestH(t *testing.T) {
 	t.Run("With Attrs and Children", func(t *testing.T) {
 		must := must.New(t)
 
-		result := H("h1").Attrs(Attr("class", "title")).Children(H("span"))
+		result := H("h1").Attrs(Attr("class", "title")).Ch(H("span"))
 		expected := Element{Tag: "h1", attributes: []Attribute{{Name: "class", Value: "title"}}, children: []*Element{{Tag: "span"}}}
 
 		must.Equal(result.Tag, expected.Tag)
@@ -54,7 +54,7 @@ func TestH(t *testing.T) {
 	t.Run("Build", func(t *testing.T) {
 		must := must.New(t)
 
-		result := H("h1").Attrs(Attr("class", "title")).Children(H("welcome", true))
+		result := H("h1").Attrs(Attr("class", "title")).Ch(H("welcome", true))
 		expected := "<h1>welcome</h1>"
 
 		must.Equal(result.Build(), expected)

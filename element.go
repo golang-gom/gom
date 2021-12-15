@@ -23,7 +23,7 @@ func (el *Element) Attrs(attrs ...Attribute) *Element {
 	return el
 }
 
-func (el *Element) Children(children ...*Element) *Element {
+func (el *Element) Ch(children ...*Element) *Element {
 	el.children = children
 	return el
 }
