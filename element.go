@@ -34,7 +34,12 @@ func (el Element) Build() (html string) {
 		return
 	}
 
-	html += fmt.Sprintf("<%s>", el.Tag)
+	attrs := ""
+	for _, attr := range el.attributes {
+		attrs += " " + attr.Build()
+	}
+
+	html += fmt.Sprintf("<%s%s>", el.Tag, attrs)
 
 	for _, child := range el.children {
 		html += child.Build()
