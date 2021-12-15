@@ -53,3 +53,22 @@ func main() {
 	println(dom.Build())
 }
 ```
+
+You want to run JS? It will do for you!
+```go
+package main
+
+import "github.com/hadihammurabi/gom"
+
+func main() {
+	dom := gom.H("script").C(
+		gom.H(
+			`
+				alert("welcome message!!!");
+			`,
+			gom.IsFinite),
+	)
+
+	println(dom.Build())
+}
+```
