@@ -8,15 +8,15 @@ package main
 import "github.com/hadihammurabi/gom"
 
 func main() {
-	dom := gom.H("html").Children(
-		gom.H("head").Children(
-			gom.H("title").Children(
-				gom.H("Home Page", true),
+	dom := gom.H("html").C(
+		gom.H("head").C(
+			gom.H("title").C(
+				gom.H("Home Page", gom.IsFinite),
 			),
 		),
-		gom.H("body").Children(
-			gom.H("h1").Children(
-				gom.H("Welcome to our Home Page!", true),
+		gom.H("body").C(
+			gom.H("h1").C(
+				gom.H("Welcome to our Home Page!", gom.IsFinite),
 			),
 		),
 	)
@@ -37,19 +37,19 @@ package main
 import "github.com/hadihammurabi/gom"
 
 func main() {
-        dom := gom.HTML.Children(
-                gom.Head.Children(
-                        gom.Title.Children(
-                                gom.Text("Home Page"),
-                        ),
-                ),
-                gom.Body.Children(
-                        gom.H1.Children(
-                                gom.Text("Welcome to our Home Page!"),
-                        ),
-                ),
-        )
+	dom := gom.HTML.C(
+		gom.Head.C(
+			gom.Title.C(
+				gom.Text("Home Page"),
+			),
+		),
+		gom.Body.C(
+			gom.H1.C(
+				gom.Text("Welcome to Home Page!"),
+			),
+		),
+	)
 
-        println(dom.Build())
+	println(dom.Build())
 }
 ```
