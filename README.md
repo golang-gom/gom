@@ -72,3 +72,6 @@ func main() {
 	println(dom.Build())
 }
 ```
+
+# Lincese
+This project is under a license.
