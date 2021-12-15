@@ -1,6 +1,8 @@
 package gom
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Element struct {
 	Tag        string
@@ -20,12 +22,12 @@ func H(t string, options ...*Option) *Element {
 	return el
 }
 
-func (el *Element) Attrs(attrs ...Attribute) *Element {
+func (el *Element) A(attrs ...Attribute) *Element {
 	el.attributes = attrs
 	return el
 }
 
-func (el *Element) Ch(children ...*Element) *Element {
+func (el *Element) C(children ...*Element) *Element {
 	el.children = children
 	return el
 }
