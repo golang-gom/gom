@@ -9,13 +9,15 @@ type Element struct {
 	children   []*Element
 }
 
-func H(t string, isFinite ...bool) *Element {
-	_isFinite := false
-	if len(isFinite) > 0 && isFinite[0] {
-		_isFinite = true
+func H(t string, options ...*Option) *Element {
+	el := &Element{Tag: t, attributes: []Attribute{}, children: []*Element{}}
+	for _, option := range options {
+		if option.Name == IsFinite.Name {
+			el.isFinite = true
+		}
 	}
 
-	return &Element{t, _isFinite, []Attribute{}, []*Element{}}
+	return el
 }
 
 func (el *Element) Attrs(attrs ...Attribute) *Element {

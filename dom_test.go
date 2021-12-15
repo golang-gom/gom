@@ -12,7 +12,7 @@ func TestText(t *testing.T) {
 		must := must.New(t)
 
 		result := Text("test")
-		expected := H("test", true)
+		expected := H("test", IsFinite)
 
 		must.Equal(result.Tag, expected.Tag)
 		must.Equal(result.isFinite, expected.isFinite)

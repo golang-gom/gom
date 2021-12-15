@@ -25,5 +25,5 @@ var (
 )
 
 func Text(text string) *Element {
-	return H(text, true)
+	return H(text, IsFinite)
 }

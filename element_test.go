@@ -54,7 +54,7 @@ func TestH(t *testing.T) {
 	t.Run("Build", func(t *testing.T) {
 		must := must.New(t)
 
-		result := H("h1").Attrs(Attr("class", "title")).Ch(H("welcome", true))
+		result := H("h1").A(Attr("class", "title")).C(H("welcome", IsFinite))
 		expected := "<h1>welcome</h1>"
 
 		must.Equal(result.Build(), expected)
