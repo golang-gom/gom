@@ -54,7 +54,7 @@ func main() {
 }
 ```
 
-You want to run JS? It will do for you!
+You want JS? It will do for you!
 ```go
 package main
 
