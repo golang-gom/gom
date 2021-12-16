@@ -9,6 +9,7 @@ type Element struct {
 	Tag        string
 	isFinite   bool
 	noClose    bool
+	fs         *os.File
 	attributes []Attribute
 	children   []*Element
 }
@@ -64,13 +65,15 @@ func (el Element) Build() (html string) {
 }
 
 func (el Element) Export(loc string) (err error) {
-	f, err := os.Create(loc)
-	if err != nil {
-		return
+	if el.fs == nil {
+		el.fs, err = os.Create(loc)
+		if err != nil {
+			return
+		}
+		defer el.fs.Close()
 	}
-	defer f.Close()
 
 	htmlString := el.Build()
-	_, err = f.WriteString(htmlString)
+	_, err = el.fs.WriteString(htmlString)
 	return
 }
