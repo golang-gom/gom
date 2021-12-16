@@ -7,6 +7,7 @@ import (
 type Element struct {
 	Tag        string
 	isFinite   bool
+	noClose    bool
 	attributes []Attribute
 	children   []*Element
 }
@@ -16,6 +17,8 @@ func H(t string, options ...*Option) *Element {
 	for _, option := range options {
 		if option.Name == IsFinite.Name {
 			el.isFinite = true
+		} else if option.Name == NoClose.Name {
+			el.noClose = true
 		}
 	}
 
@@ -43,12 +46,18 @@ func (el Element) Build() (html string) {
 		attrs += " " + attr.Build()
 	}
 
-	html += fmt.Sprintf("<%s%s>", el.Tag, attrs)
+	noClose := ""
+	if el.noClose {
+		noClose = " /"
+	}
+	html += fmt.Sprintf("<%s%s%s>", el.Tag, attrs, noClose)
 
 	for _, child := range el.children {
 		html += child.Build()
 	}
 
-	html += fmt.Sprintf("</%s>", el.Tag)
+	if !el.noClose {
+		html += fmt.Sprintf("</%s>", el.Tag)
+	}
 	return html
 }
