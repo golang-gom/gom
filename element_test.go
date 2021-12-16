@@ -55,7 +55,16 @@ func TestH(t *testing.T) {
 		must := must.New(t)
 
 		result := H("h1").A(Attr("class", "title")).C(H("welcome", IsFinite))
-		expected := "<h1>welcome</h1>"
+		expected := "<h1 class=\"title\">welcome</h1>"
+
+		must.Equal(result.Build(), expected)
+	})
+
+	t.Run("Build With No Close", func(t *testing.T) {
+		must := must.New(t)
+
+		result := H("hr", NoClose)
+		expected := "<hr />"
 
 		must.Equal(result.Build(), expected)
 	})
