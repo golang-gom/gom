@@ -2,6 +2,7 @@ package gom
 
 import (
 	"fmt"
+	"os"
 )
 
 type Element struct {
@@ -60,4 +61,16 @@ func (el Element) Build() (html string) {
 		html += fmt.Sprintf("</%s>", el.Tag)
 	}
 	return html
+}
+
+func (el Element) Export(loc string) (err error) {
+	f, err := os.Create(loc)
+	if err != nil {
+		return
+	}
+	defer f.Close()
+
+	htmlString := el.Build()
+	_, err = f.WriteString(htmlString)
+	return
 }
