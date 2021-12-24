@@ -1,5 +1,5 @@
 # gom
-DOM building using Go
+Build DOM in backend using Go
 
 # Usage
 ```go
