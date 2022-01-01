@@ -1,4 +1,4 @@
-module github.com/hadihammurabi/gom
+module github.com/golang-gom/gom
 
 go 1.17
 
