@@ -72,3 +72,6 @@ func main() {
 	println(dom.Build())
 }
 ```
+
+# License
+This project is under [Mozilla Public License 2.0](./LICENSE).
