@@ -1,29 +1,25 @@
 package gom
 
-var (
-	HTML = func() *Element { return H("html") }
-	Head = func() *Element { return H("head") }
-	Body = func() *Element { return H("body") }
-	Div  = func() *Element { return H("div") }
+func HTML() *Element { return H("html") }
+func Head() *Element { return H("head") }
+func Body() *Element { return H("body") }
+func Div() *Element  { return H("div") }
 
-	Table = func() *Element { return H("table") }
-	THead = func() *Element { return H("thead") }
-	TBody = func() *Element { return H("tbody") }
-	TR    = func() *Element { return H("tr") }
-	TD    = func() *Element { return H("td") }
+func Table() *Element { return H("table") }
+func THead() *Element { return H("thead") }
+func TBody() *Element { return H("tbody") }
+func TR() *Element    { return H("tr") }
+func TD() *Element    { return H("td") }
 
-	Title = func() *Element { return H("title") }
-	H1    = func() *Element { return H("h1") }
-	H2    = func() *Element { return H("h2") }
-	H3    = func() *Element { return H("h3") }
-	H4    = func() *Element { return H("h4") }
-	H5    = func() *Element { return H("h5") }
-	Span  = func() *Element { return H("span") }
-	I     = func() *Element { return H("i") }
-	B     = func() *Element { return H("b") }
-	U     = func() *Element { return H("u") }
-)
+func Title() *Element { return H("title") }
+func H1() *Element    { return H("h1") }
+func H2() *Element    { return H("h2") }
+func H3() *Element    { return H("h3") }
+func H4() *Element    { return H("h4") }
+func H5() *Element    { return H("h5") }
+func Span() *Element  { return H("span") }
+func I() *Element     { return H("i") }
+func B() *Element     { return H("b") }
+func U() *Element     { return H("u") }
 
-func Text(text string) *Element {
-	return H(text, IsFinite)
-}
+func Text(text string) *Element { return H(text, IsFinite) }
